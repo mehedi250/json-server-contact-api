@@ -9,9 +9,11 @@ server.use(router);
 
 const PORT = 3000;
 
-server.listen(PORT, () => {
-  console.log(`JSON Server running on port ${PORT}`);
-  console.log(`http://localhost:${PORT}/contacts`);
-});
+if (!process.env.VERCEL) {
+  server.listen(PORT, () => {
+    console.log(`JSON Server running on port ${PORT}`);
+    console.log(`http://localhost:${PORT}/contacts`);
+  });
+}
 
 export default server;
