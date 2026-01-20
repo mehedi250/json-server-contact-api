@@ -13,7 +13,8 @@ server.listen(PORT, () => {
   console.log(`JSON Server running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/contacts`);
 
-  // Cron job to hit the URL every 5 minutes
+  // Cron job to hit the URL every 12 minutes
+  const time = 12 * 60 * 1000; // 12 minutes in milliseconds
   setInterval(async () => {
     try {
       const url = "https://json-server-contact-api.onrender.com/contacts?_sort=id&_order=desc";
@@ -23,7 +24,7 @@ server.listen(PORT, () => {
     } catch (error) {
       console.error("Ping failed:", error.message);
     }
-  }, 5 * 60 * 1000); // 5 minutes in milliseconds
+  }, time);
 });
 
 export default server;
